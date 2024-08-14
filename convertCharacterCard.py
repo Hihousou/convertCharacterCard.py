@@ -5,6 +5,7 @@ import json
 def convertCharacterCard(filePath):
     try:
         img = Image.open(filePath)
+        img.getexif() # Sometimes the exif chunk comes after idat
         if "chara" not in img.info:
             raise KeyError("Image doesn't countain 'chara' metadata")
         
